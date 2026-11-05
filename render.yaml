@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: finora-bank-api
+    runtime: python
+    plan: starter
+    rootDir: backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --workers 2 --threads 4 --timeout 60 --bind 0.0.0.0:$PORT app:app
+    healthCheckPath: /api/health
+    disk:
+      name: finora-sqlite-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: FLASK_HOST
+        value: 0.0.0.0
+      - key: FINORA_DATABASE_PATH
+        value: /var/data/finora.sqlite3
+      - key: FINORA_SESSION_HOURS
+        value: "12"
+      # Number of reverse proxies in front of the app, so per-IP rate limits see the real
+      # client IP. Verify against Render's X-Forwarded-For behaviour; too high lets clients spoof IPs.
+      - key: FINORA_TRUSTED_PROXY_HOPS
+        value: "1"
+      - key: FINORA_CHAT_PER_DAY
+        value: "100"
+      - key: OPENAI_MODEL
+        value: gpt-4o-mini
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
