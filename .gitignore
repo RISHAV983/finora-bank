@@ -1,0 +1,25 @@
+node_modules/
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+backend/.env
+backend/.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+.DS_Store
+Thumbs.db
+frontend/playwright-report/
+frontend/test-results/
+frontend/playwright/.cache/
+backend/*.sqlite3
+backend/*.sqlite3-shm
+backend/*.sqlite3-wal
+
+# Keep local and deployment environment secrets out of Git.
+**/.env
+**/.env.*
+!**/.env.example
+*.db
+*.db-*

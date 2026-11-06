@@ -1,0 +1,46 @@
+{
+  "name": "bank-ui-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "test:e2e:responsive": "playwright test tests/e2e/responsive.spec.js",
+    "test:api-smoke": "python ../backend/smoke_test.py",
+    "verify:all": "npm run test:backend && npm run lint && npm test && npm run build && npm run test:e2e",
+    "test:backend": "node scripts/run-backend-tests.mjs",
+    "test:llm-live": "python ../backend/smoke_llm.py",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@vitejs/plugin-react": "4.3.4",
+    "lucide-react": "0.468.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "6.30.6",
+    "vite": "6.4.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.17.0",
+    "@playwright/test": "1.55.0",
+    "@testing-library/jest-dom": "6.6.4",
+    "@testing-library/react": "16.1.0",
+    "@testing-library/user-event": "14.5.2",
+    "eslint": "9.17.0",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "eslint-plugin-react-refresh": "0.4.16",
+    "globals": "15.14.0",
+    "jsdom": "25.0.1",
+    "prettier": "3.6.2",
+    "vitest": "2.1.9"
+  }
+}
